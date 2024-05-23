@@ -11,9 +11,13 @@ public class Function02 {
         System.out.println("num1 : " + num1);
         System.out.println("num2 : " + num2);
     }
-
+    //매개변수 o, 리턴 o
     String 빙수기계(String 재료, int count) {
         return 재료 + "빙수 : " + count;
+    }
+    //매개변수 x, 리턴 o
+    String getData(){
+        return "데이터";
     }
 
 }

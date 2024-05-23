@@ -15,5 +15,6 @@ public class Function03 {
         System.out.println(student.name);
         System.out.println(student.age);
         System.out.println(student.phone);
+
     }
 }
