@@ -8,6 +8,9 @@ public class 조건문02 {
 
         StringUtils stringUtils = new StringUtils();
 
+        if(name == "박현주") {
+            System.out.println("같다");
+        }
         if(stringUtils.isEmpty(name)) {
             System.out.println("name이 비어있습니다.");
             return;  //함수 종료, void일 때만 값 없어도됨
