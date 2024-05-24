@@ -57,16 +57,25 @@ public class ArrayService {
                     System.out.println("[이름 삭제]");
                     System.out.print("삭제할 이름 : ");
                     findName = scanner.nextLine();
-                    if(!arrayService.isFind(names, findName)) {
+                    boolean isDelFind = true;
+                    int index = 0;
+                    for(int i = 0; i < names.length; i++) {
+                        if(findName.equals(names[i])) {
+                            index = i;
+                            isDelFind = false;
+                            break;
+                        }
+                    }
+                    if(isDelFind) {
                         System.out.println("이름이 존재하지 않습니다.");
                         break;
                     }
                     newNames= new String[names.length - 1];
-                    int index = 0;
-                    for(String i : names) {
-                        if(!findName.equals(i)) {
-                            newNames[index] = i;
-                            index++;
+                    int cnt = 0;
+                    for(int i = 0; i < names.length; i++) {
+                        if(i != index) {
+                            newNames[cnt] = names[i];
+                            cnt++;
                         }
                     }
                     names = newNames;
