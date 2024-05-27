@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class ArrayService {
 
     public static void main(String[] args) {
+        ArrayUtils arrayUtils = new ArrayUtils();
         Scanner scanner = new Scanner(System.in);
         String[] names = new String[0];
-        ArrayService arrayService = new ArrayService();
 
         boolean isRun = true;
         while(isRun) {
@@ -21,8 +21,9 @@ public class ArrayService {
             System.out.print("메뉴 선택 : ");
 
             String selecteMenu = scanner.nextLine();
-            String[] newNames ;
+            String[] newNames;
             String findName;
+            int findIndex = -1;
 
             switch (selecteMenu) {
                 case "1":
@@ -38,56 +39,44 @@ public class ArrayService {
                     break;
                 case "2":
                     System.out.println("[이름 수정]");
-                    System.out.print("이름 검색 : ");
+                    System.out.print("수정할 이름: ");
                     findName = scanner.nextLine();
-                    if(!arrayService.isFind(names, findName)) {
-                        System.out.println("이름이 존재하지 않습니다.");
+                    findIndex = arrayUtils.findIndexByName(names,findName);
+                    if(findIndex == -1) {
+                        System.out.println("해당 이름은 존재하지 않습니다.");
                         break;
                     }
-                    for(int i = 0; i < names.length; i++) {
-                        if(findName.equals(names[i])) {
-                            System.out.print("수정할 이름 : ");
-                            names[i] = scanner.nextLine();
-                            System.out.println("수정 완료");
-                            break;
-                        }
-                    }
+                    System.out.print("새 이름 : ");
+                    names[findIndex] = scanner.nextLine();
+                    System.out.println("수정 완료");
                     break;
                 case "3":
                     System.out.println("[이름 삭제]");
                     System.out.print("삭제할 이름 : ");
                     findName = scanner.nextLine();
-                    boolean isDelFind = true;
-                    int index = 0;
-                    for(int i = 0; i < names.length; i++) {
-                        if(findName.equals(names[i])) {
-                            index = i;
-                            isDelFind = false;
-                            break;
-                        }
-                    }
-                    if(isDelFind) {
-                        System.out.println("이름이 존재하지 않습니다.");
+                    findIndex = arrayUtils.findIndexByName(names, findName);
+                    if(findIndex == -1) {
+                        System.out.println("해당 이름은 존재하지 않습니다.");
                         break;
                     }
                     newNames= new String[names.length - 1];
-                    int cnt = 0;
-                    for(int i = 0; i < names.length; i++) {
-                        if(i != index) {
-                            newNames[cnt] = names[i];
-                            cnt++;
+                    for(int i = 0; i < newNames.length; i++) {
+                        if(i < findIndex) {
+                            newNames[i] = names[i];
+                            continue;
                         }
+                        newNames[i] = names[i + 1];
                     }
                     names = newNames;
-                    System.out.println("삭제 완료");
+                    System.out.println(findName + "을 삭제했습니다.");
                     break;
                 case "4":
                     System.out.println("[이름 찾기]");
                     System.out.print("찾을 이름 : ");
-                    String result = null;
                     findName = scanner.nextLine();
-                    if(!arrayService.isFind(names, findName)) {
-                        System.out.println("해당 이름은 존재하지 않는 이름입니다.");
+                    findIndex = arrayUtils.findIndexByName(names, findName);
+                    if(findIndex == -1) {
+                        System.out.println("해당 이름은 존재하지 않습니다.");
                         break;
                     }
                     System.out.println("해당 이름은 등록된 이름입니다.");
@@ -107,15 +96,6 @@ public class ArrayService {
             }
             System.out.println();
         }
-    }
-    public boolean isFind(String[] names, String findName){
-
-        for(String name : names) {
-            if(findName.equals(name)) {
-                return true;
-            }
-        }
-        return false;
     }
 }
 
