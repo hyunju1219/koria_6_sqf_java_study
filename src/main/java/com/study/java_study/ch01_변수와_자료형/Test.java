@@ -1,37 +1,40 @@
 package com.study.java_study.ch01_변수와_자료형;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Test {
 
     public static void main(String[] args) {
-
-        int[] a1 = {1, 5, 2, 6, 3, 7, 4};
-        int[][] a2 = {{2, 5, 3}, {4, 4, 1}, {1, 7, 3}};
-
-        int size = a2.length;
-        int[] answer = new int[size];
-
-        for(int i = 0; i < a2.length; i++) {
-            int a = Integer.valueOf(a2[i][0]);
-            int b = Integer.valueOf(a2[i][1]);
-            int c = Integer.valueOf(a2[i][2]);
-            int[] temp = new int[b - a + 1];
-            int cnt = 0;
-
-            for(int j = a - 1; j < b; j++) {
-                temp[cnt++] = a1[j];
+        String[] participant = {"leo", "kiki", "eden"};
+        String[] completion = {"eden", "kiki"};
+        Map<String, Integer> map = new HashMap<>();
+        String answer = "";
+        Integer a = 0;
+        for(String name : participant) {
+            if(map.containsKey(name)) {
+                a = map.get(name) + 1;
+                map.put(name, a);
+                continue;
             }
-            Arrays.sort(temp);
-            answer[i] = temp[c - 1];
-
-        }
-        for(int num : answer) {
-            System.out.print(num + " ");
+            map.put(name,1);
         }
 
+        for(String name : completion) {
+            if(map.keySet().contains(name)) {
+                a =map.get(name) + 1;
+                map.replace(name, a);
+            }
+        }
 
-
+        System.out.println(map);
+        for(Map.Entry<String, Integer> entry : map.entrySet()){
+            if(entry.getValue() == 1) {
+                answer = entry.getKey();
+            }
+        }
+        System.out.println(answer);
     }
 }
 

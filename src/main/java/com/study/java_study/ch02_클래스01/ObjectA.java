@@ -4,4 +4,14 @@ public class ObjectA {
     int num;
     String name;
 
+    public ObjectA() {
+    }
+
+    void print() {
+        System.out.println(num);
+        System.out.println(name);
+    }
 }
+
+
+
