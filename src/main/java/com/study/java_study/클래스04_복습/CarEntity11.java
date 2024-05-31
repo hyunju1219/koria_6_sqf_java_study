@@ -1,30 +1,26 @@
 package com.study.java_study.클래스04_복습;
 
-public class CarEntity {
-    private int carId;
+public class CarEntity11 {
+    private int carCode;
     private String carName;
     private String carColor;
 
-    public CarEntity() {
+    public CarEntity11() {
     }
 
-    public CarEntity(int carId, String carName, String carColor) {
-        this.carId = carId;
+    public CarEntity11(int carCode, String carName, String carColor, String carBrand) {
+        this.carCode = carCode;
         this.carName = carName;
         this.carColor = carColor;
+
     }
 
-    public CarEntity(int carId, String carName) {
-        this.carId = carId;
-        this.carName = carName;
+    public int getCarCode() {
+        return carCode;
     }
 
-    public int getCarId() {
-        return carId;
-    }
-
-    public void setCarId(int carId) {
-        this.carId = carId;
+    public void setCarCode(int carCode) {
+        this.carCode = carCode;
     }
 
     public String getCarName() {
@@ -42,4 +38,6 @@ public class CarEntity {
     public void setCarColor(String carColor) {
         this.carColor = carColor;
     }
+
+
 }

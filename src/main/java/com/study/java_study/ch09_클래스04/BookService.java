@@ -1,5 +1,6 @@
 package com.study.java_study.ch09_클래스04;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class BookService {
@@ -13,17 +14,21 @@ public class BookService {
     }
 
     private String selectMenu() {
-        String menus = "1234q";
+        String[] menus = {"1", "2", "3", "4", "q"};
         String selectMenu = null;
         while (true) {
             System.out.print("메뉴 선택 : ");
             selectMenu = scanner.nextLine();
-            if(menus.contains(selectMenu)) {
-                break;
+//            if(Arrays.binarySearch(menus, selectMenu) > -1) {
+//                break;
+//            }
+            for(String menu : menus) {
+                if(menu.equals(selectMenu)) {
+                    return selectMenu;
+                }
             }
             System.out.println("잘못된 입력입니다. 다시 입력하세요");
         }
-        return selectMenu;
     }
 
     public boolean run() {
