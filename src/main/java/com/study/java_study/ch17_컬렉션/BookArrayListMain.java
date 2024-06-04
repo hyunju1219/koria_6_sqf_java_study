@@ -32,13 +32,13 @@ public class BookArrayListMain {
          */
 
         Scanner scanner = new Scanner(System.in);
-        List<BookD> bookList = new ArrayList<>();
+        List<Book> bookList = new ArrayList<>();
         for(int i = 0; i < 3; i++) {
             System.out.print("도서명 : ");
             String bookName = scanner.nextLine();
             System.out.print("저자명 : ");
             String author = scanner.nextLine();
-            bookList.add(new BookD(bookName, author));
+            bookList.add(new Book(bookName, author));
         }
 
         System.out.println("도서 전체 조회");
@@ -56,7 +56,7 @@ public class BookArrayListMain {
 //        }
         for(int i = 0; i < bookList.size(); i++) {
             if(bookList.get(i).getBookName().equals(delName)) {
-                BookD removeBook = bookList.remove(i);
+                Book removeBook = bookList.remove(i);
                 System.out.println("삭제된 도서 정보 : " + removeBook);
                 break;
             }

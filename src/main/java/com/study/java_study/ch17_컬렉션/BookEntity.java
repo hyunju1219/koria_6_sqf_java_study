@@ -5,7 +5,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class BookD {
+public class BookEntity {
+    private int bookId;
     private String bookName;
-    private String author;
 }

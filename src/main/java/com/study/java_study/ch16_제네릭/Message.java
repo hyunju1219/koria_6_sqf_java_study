@@ -7,5 +7,4 @@ import lombok.Data;
 @Data
 public class Message<T> {
     private T message;
-
 }

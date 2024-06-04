@@ -1,6 +1,6 @@
 package com.study.java_study.ch15_Static;
 
-public class StudentRepository { ;
+public class StudentRepository {
     private String[] names;
 
     private static StudentRepository instance; //1. 인스턴스 변수
