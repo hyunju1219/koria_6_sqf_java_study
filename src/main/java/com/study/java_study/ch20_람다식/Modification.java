@@ -9,8 +9,7 @@ package com.study.java_study.ch20_람다식;
 
  */
 
-@FunctionalInterface // 함수형 인터페이스(메서드 1개만 가능)
+@FunctionalInterface // 함수형 인터페이스(메서드 1개만 가능) 람다식으로 사용하는 인터페이스
 public interface Modification<T> {
     T modify(T oldData, T newData);
-
 }
